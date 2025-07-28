@@ -1,4 +1,4 @@
-(function () {
+(async function () {
   if (!navigator.clipboard) {
     alert("navigator.clipboard is not supported.");
     return;
@@ -8,7 +8,7 @@
   const title = document.title || url;
 
   try {
-    navigator.clipboard.writeText(
+    await navigator.clipboard.writeText(
       `[${title.replace(/_|[-]|[!]|\.|\(|\)|\[|\]|\{|\}|\*|\\|#|`|\+/gi, "\\$&")}](${url})`
     );
 
