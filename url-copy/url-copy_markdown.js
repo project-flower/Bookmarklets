@@ -9,7 +9,7 @@
 
   try {
     await navigator.clipboard.writeText(
-      `[${title.replace(/_|[-]|[!]|\.|\(|\)|\[|\]|\{|\}|\*|\\|#|`|\+/gi, "\\$&")}](${url})`
+      `[${title.replace(/[!]|#|\(|\)|\*|\+|[-]|\.|<|>|\[|\\|\]|_|\{|\}|`/gi, "\\$&")}](${url})`
     );
 
     alert("Copied!");
