@@ -23,3 +23,17 @@
 
 1. ターミナルから `npm run generate_url-copy` を実行します。
 1. \*\_compiled.js ファイルが作成又は更新されます。
+
+## ブックマーク URL
+
+- [url-copy_compiled.js](./url-copy_compiled.js)
+
+```
+javascript:(async function(){if(navigator.clipboard){var a=document.URL,b=document.title||a;try{await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([`<a href="${a}">${b}</a>`],{type:"text/html"}),"text/plain":new Blob([b],{type:"text/plain"})})]),alert("Copied!")}catch(c){alert(c.message)}}else alert("navigator.clipboard is not supported.")})();
+```
+
+- [url-copy_markdown_compiled.js](./url-copy_markdown_compiled.js)
+
+```
+javascript:(async function(){if(navigator.clipboard){var a=document.URL,b=document.title||a;try{await navigator.clipboard.writeText(`[${b.replace(/[!]|#|\(|\)|\*|\+|[-]|\.|<|>|\[|\\|\]|_|\{|\}|`/gi,"\\$&")}](${a})`),alert("Copied!")}catch(c){alert(c.message)}}else alert("navigator.clipboard is not supported.")})();
+```
