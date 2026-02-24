@@ -10,9 +10,14 @@
   try {
     await navigator.clipboard.write([
       new ClipboardItem({
-        "text/html": new Blob([`<a href="${url}">${title}</a>`], {
-          type: "text/html",
-        }),
+        "text/html": new Blob(
+          [
+            `<a href="${url}">${title.replace("&", "&amp;").replace("'", "&apos;").replace("<", "&lt;").replace(">", "&gt;")}</a>`,
+          ],
+          {
+            type: "text/html",
+          },
+        ),
         "text/plain": new Blob([title], {
           type: "text/plain",
         }),

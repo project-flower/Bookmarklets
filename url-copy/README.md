@@ -29,7 +29,7 @@
 - [url-copy_compiled.js](./url-copy_compiled.js)
 
 ```
-javascript:(async function(){if(navigator.clipboard){var a=document.URL,b=document.title||a;try{await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([`<a href="${a}">${b}</a>`],{type:"text/html"}),"text/plain":new Blob([b],{type:"text/plain"})})]),alert("Copied!")}catch(c){alert(c.message)}}else alert("navigator.clipboard is not supported.")})();
+javascript:(async function(){if(navigator.clipboard){var a=document.URL,b=document.title||a;try{await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([`<a href="${a}">${b.replace("&","&amp;").replace("'","&apos;").replace("<","&lt;").replace(">","&gt;")}</a>`],{type:"text/html"}),"text/plain":new Blob([b],{type:"text/plain"})})]),alert("Copied!")}catch(c){alert(c.message)}}else alert("navigator.clipboard is not supported.")})();
 ```
 
 - [url-copy_markdown_compiled.js](./url-copy_markdown_compiled.js)
